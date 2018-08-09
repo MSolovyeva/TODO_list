@@ -10,8 +10,6 @@ function makeDone(order){
     renderList();
 }
 
-
-    ./node_modules/.bin/eslint --init
 function addToDo(){
    let toDoInput = document.getElementById('input');
    let toDoInputValue = toDoInput.value;
