@@ -78,21 +78,31 @@ function renderList() {
   list.forEach((item, i) => {
     li = document.createElement('li');
     li.innerHTML = item.title;
+
     buttonDone = document.createElement('button');
     buttonDone.setAttribute('order', i);
-    buttonDone.setAttribute('class', 'btn btn-outline-success float-right');
+    buttonDone.setAttribute('class', 'btn btn-outline-secondary float-right');
     buttonDone.innerHTML = 'Done';
 
     buttonDone.addEventListener('click', (e) => {
       makeDone(e.target.getAttribute('order'));
     });
-    if (item.done) li.className = 'done';
+    if (item.done) {
+      li.className = 'done';
+      buttonDone.innerHTML = 'Completed';
+      buttonDone.setAttribute('class', 'btn btn-success float-right');
+
+
+    } else {
+      buttonDone.innerHTML = 'Done';
+      buttonDone.style.width = '105px';
+    }
 
     buttonEdit = document.createElement('button');
     buttonEdit.setAttribute('order', i);
     buttonEdit.setAttribute('data-toggle', 'modal');
     buttonEdit.setAttribute('data-target', '#modal');
-    buttonEdit.setAttribute('class', 'btn btn-outline-secondary float-right');
+    buttonEdit.setAttribute('class', 'btn btn-outline-primary float-right');
     buttonEdit.innerHTML = 'Edit';
 
     buttonEdit.addEventListener('click', (e) => {
